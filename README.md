@@ -16,7 +16,7 @@ This project (final project, **Tracking 3D bounding boxese and computing refined
 
 ## 2. Key Implementation
 
-### FP.1 Match 3D Objects
+### Match 3D Objects (FP.1)
 
 Implement the method "`matchBoundingBoxes`", which takes as input both the previous and the current data frames and provides as output the ids of the matched regions of interest (i.e. the `boxID` property). Matches must be the ones with the highest number of keypoint correspondences.
 
@@ -67,7 +67,7 @@ void matchBoundingBoxes(const std::vector<cv::DMatch>& curr_KPMatches, const std
 ```
 
 
-### FP.2 Compute Lidar-based TTC
+### Compute Lidar-based TTC (FP.2)
 
 Compute the time-to-collision in second for all matched 3D objects using only Lidar measurements from the matched bounding boxes between current and previous frame.
 
@@ -104,7 +104,7 @@ std::pair<double, double> computeTTCLidar(const std::vector<LidarPoint>& lidarPo
 }
 ```
 
-### FP.3 Associate Keypoint Correspondences with Bounding Boxes
+### Associate Keypoint Correspondences with Bounding Boxes (FP.3)
 
 Prepare the TTC computation based on camera measurements by associating keypoint correspondences to the bounding boxes which enclose them. All matches which satisfy this condition must be added to a vector in the respective bounding box.
 
@@ -156,7 +156,7 @@ void clusterKptMatchesWithROI(const std::vector<cv::KeyPoint>& kptsPrev, const s
 ```
 
 
-### FP.4 Compute Camera-based TTC
+### Compute Camera-based TTC (FP.4)
 
 Compute the time-to-collision in second for all matched 3D objects using only keypoint correspondences from the matched bounding boxes between current and previous frame.
 
