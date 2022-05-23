@@ -5,12 +5,12 @@ add_definitions(-std=c++2a)
 
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++20")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++20")
 
 project(camera_fusion)
 
 # Edit this line for your environments...
-SET(OpenCV_DIR "D:/github_repository/vcpkg/installed/x64-windows/share/opencv")
+#SET(OpenCV_DIR "D:/github_repository/vcpkg/installed/x64-windows/share/opencv")
 
 # Check the version of the OpenCV library...
 find_package(OpenCV 4.5 REQUIRED)
