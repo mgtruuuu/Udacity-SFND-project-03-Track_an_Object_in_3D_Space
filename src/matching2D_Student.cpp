@@ -1,8 +1,6 @@
-#include <numeric>
-#include <string>
-
 #include "matching2D.hpp"
 
+#include <string>
 
 
 
@@ -32,7 +30,7 @@ void detectKeypoints(const Detector detectorType, const cv::Mat& imgGray,
     case Detector::SIFT:        detector = cv::SIFT::create();
         detector->detect(imgGray, keypoints);       break;
 
-    default:                    assert(false, "Wrong Detector type!\n");
+    //default:                    assert(false, "Wrong Detector type!\n");
     }
 }
 
@@ -86,7 +84,7 @@ void computeDescriptors(const Detector detectorType, const Descriptor descriptor
     case Descriptor::AKAZE:     extractor = cv::AKAZE::create();    break;
     case Descriptor::SIFT:      extractor = cv::SIFT::create();     break;
 
-    default:                    assert(false, "Wrong Descriptor type!\n");
+    //default:                    assert(false, "Wrong Descriptor type!\n");
     }
 
     //const cv::InputArray& mask{ cv::noArray() };
@@ -247,7 +245,7 @@ void matchDescriptors(const cv::Mat& descSource, const cv::Mat& descRef,
         matcher->match(descSource, descRef, matches);       // Finds the best match for each descriptor in desc1.
     }
     else if (selectorType == Selector::SEL_KNN) {           // k nearest neighbors (k=2)
-        assert(crossCheck == false, "The 8th argument of the function matchDescriptors() in main() must be 'false' in order to choose the SEL_KNN Selector Type.\n");
+        //assert(crossCheck == false, "The 8th argument of the function matchDescriptors() in main() must be 'false' in order to choose the SEL_KNN Selector Type.\n");
         constexpr int k{ 2 };
         std::vector<std::vector<cv::DMatch>> knn_matches;
         matcher->knnMatch(descSource, descRef, knn_matches, k);
@@ -293,7 +291,7 @@ void visualizeMatches(const cv::Mat& imgFront, const cv::Mat& imgBack,
         cv::Scalar::all(-1), cv::Scalar::all(-1),
         std::vector<char>(), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
-    std::string windowName{ "Matching keypoints between two camera images" };
+    const std::string windowName{ "Matching keypoints between two camera images" };
     cv::namedWindow(windowName, 7);
     cv::imshow(windowName, matchImg);
     std::cout << "Press key to continue to next image" << std::endl;

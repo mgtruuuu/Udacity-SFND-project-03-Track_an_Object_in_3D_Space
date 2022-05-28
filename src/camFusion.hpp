@@ -1,10 +1,14 @@
 #ifndef camFusion_hpp
 #define camFusion_hpp
 
-#include <stdio.h>
-#include <vector>
-#include <opencv2/core.hpp>
 #include "dataStructures.h"
+
+#include <opencv2/core.hpp>
+
+#include <vector>
+
+
+
 
 
 void clusterLidarWithROI(const std::vector<LidarPoint>& lidarPoints,

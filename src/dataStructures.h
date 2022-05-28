@@ -1,9 +1,11 @@
 #ifndef dataStructures_h
 #define dataStructures_h
 
-#include <vector>
-#include <map>
+
 #include <opencv2/core.hpp>
+
+#include <map>
+#include <vector>
 
 
 

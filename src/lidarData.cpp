@@ -1,11 +1,13 @@
-#include <algorithm>
-#include <iostream>
+#include "lidarData.hpp"
+#include "options.h"
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include "lidarData.hpp"
-#include "enums.h"
+#include <algorithm>
+#include <iostream>
+
+
 
 
 

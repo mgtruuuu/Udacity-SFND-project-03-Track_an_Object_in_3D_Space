@@ -1,16 +1,13 @@
-#include <algorithm>
-#include <deque>
-#include <iostream>
-#include <limits>
-#include <numeric>
-#include <set>
+#include "camFusion.hpp"
+#include "dataStructures.h"
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include "camFusion.hpp"
-#include "dataStructures.h"
-
+#include <algorithm>
+#include <deque>
+#include <iostream>
+#include <set>
 
 
 

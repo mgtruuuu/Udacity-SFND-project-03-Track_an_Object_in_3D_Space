@@ -1,11 +1,14 @@
 #ifndef lidarData_hpp
 #define lidarData_hpp
 
-#include <stdio.h>
+#include "dataStructures.h"
+
 #include <fstream>
 #include <string>
 
-#include "dataStructures.h"
+
+
+
 
 void cropLidarPoints(const float minX, const float maxX, const float maxY,
 	const float minZ, const float maxZ, const float minR, std::vector<LidarPoint>& lidarPoints);

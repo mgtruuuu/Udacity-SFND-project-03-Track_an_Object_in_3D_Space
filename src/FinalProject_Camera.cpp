@@ -1,12 +1,11 @@
 /* INCLUDES FOR THIS PROJECT */
-#include <cmath>
-#include <deque>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <limits>
-#include <sstream>
-#include <vector>
+
+#include "camFusion.hpp"
+#include "dataStructures.h"
+#include "lidarData.hpp"
+#include "matching2D.hpp"
+#include "objectDetection2D.hpp"
+#include "options.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -15,17 +14,20 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/xfeatures2d/nonfree.hpp>
 
-#include "camFusion.hpp"
-#include "dataStructures.h"
-#include "enums.h"
-#include "lidarData.hpp"
-#include "matching2D.hpp"
-#include "objectDetection2D.hpp"
+#include <cmath>
+#include <deque>
+#include <fstream>
+#include <limits>
+#include <iomanip>
+#include <iostream>
+#include <vector>
+
+
+
 
 
 void loadCalibrationData(cv::Mat& P_rect_00, cv::Mat& R_rect_00, cv::Mat& RT);
-void printResult(const Detector detectorType, const Descriptor descriptorType, 
-    const std::vector<Result>& results);
+void printResult(const Detector detectorType, const Descriptor descriptorType, const std::vector<Result>& results);
 bool writeRecordToFile(const std::string file_name,
     const Detector detectorType, const Descriptor descriptorType, const std::vector<Result>& results);
 
@@ -71,14 +73,16 @@ int main(int argc, const char* argv[]) {
     std::deque<DataFrame> dataBuffer;       // list of data frames which are held in memory at the same time
     std::vector<Result> results;
     
-
-    // visualization options
+    //
+    //// visualization options
+    //
     constexpr bool bVis_YOLO{ false };
     constexpr bool bVis_LPsFromTopView{ false };
     constexpr bool bVis_CameraView{ false };
 
-
+    //
     //// detection/description option
+    //
     constexpr Detector detectorType{ Detector::SIFT };         // SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
     constexpr Descriptor descriptorType{ Descriptor::SIFT };   // FREAK, BRIEF, BRISK, ORB, AKAZE, SIFT
     constexpr Matcher matcherType{ Matcher::MAT_BF };           // MAT_BF, MAT_FLANN
@@ -296,8 +300,8 @@ int main(int argc, const char* argv[]) {
             }
 
 
-            if (prevBB == nullptr || currBB == nullptr)
-                assert(false, "Something wrong...\n");
+            //if (prevBB == nullptr || currBB == nullptr)
+            //    assert(false, "Something wrong...\n");
 
 
             // Compute TTC for current match.
