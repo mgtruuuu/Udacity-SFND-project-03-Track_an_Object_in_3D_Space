@@ -245,13 +245,13 @@ void computeTTCCamera(const std::vector<cv::KeyPoint>& kptsPrev, const std::vect
 
 ## 3. Performance Evaluation (FP.5,6)
 
-- **Q.** Find examples where the TTC estimate of the LiDAR sensor does not seem plausible. Describe your observations and provide a sound argumentation why you think this happened.
+- **Q.** Find examples where the TTC estimate of the Lidar sensor does not seem plausible. Describe your observations and provide a sound argumentation why you think this happened.
 
 - **A.** 
 
     ![erroneous lidarpoint-based ttc](./images/graph.PNG)
     
-    From a series of the camera images and LiDAR points(x-y plane) generated from the igo-car, it seems like the distance betweem two cars are getting closed. To fully see what's happening, check the slope of blue line with X-axis(time) and Y-axis(distance). It is assumed from the fact that the ego-car is braking to a halt, getting closed to the front-car with nearly constant rate of change of speed, i.e. constant acceleration `a_{front/ego} > 0`). 
+    From a series of the camera images and Lidar points(x-y plane) generated from the igo-car, it seems like the distance betweem two cars is getting closed (See the slope of blue line with X-axis(time) and Y-axis(distance)). It can be assumed from the fact that the ego-car is braking to a halt, getting closed to the front-car with nearly constant rate of change of speed, i.e. constant acceleration `a_{front/ego} > 0`). 
 
     As you can see, the result of TTC estimates doesn't make sense in some moments (See the point A and B). At the frame A, the distance between ego- and front-car is measured a bit farther than the actual distance, resulting in the next steep drop B.
 
@@ -260,7 +260,7 @@ void computeTTCCamera(const std::vector<cv::KeyPoint>& kptsPrev, const std::vect
     ![velocity models](./images/velocity%20models.png)
 
 
-- **Q.** Run several detector/descriptor combinations and look at the differences in TTC estimation. Find out which methods perform best and also include several examples where camera-based TTC estimation is way off. As with LiDAR, describe your observations again and also look into potential reasons.
+- **Q.** Run several detector/descriptor combinations and look at the differences in TTC estimation. Find out which methods perform best and also include several examples where camera-based TTC estimation is way off. As with Lidar, describe your observations again and also look into potential reasons.
 
 - **A.** In some combination cases, camera-based TTC estimates are so poor that it cannot be relied on to get TTC values. for example, Harris/FREAK combination produces many erroneous estimates. On the other hand, SIFT combinations and Shi-Tomasi detectors tend to produce plausible estimates even though they take much time compared to others. (data from the file(`./table/benchmark.csv`))
 
